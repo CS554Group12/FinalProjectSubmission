@@ -7,6 +7,7 @@ var dataSetObj = require("../insert");
 const s3Bucket = "cs554netflix2";
 const aws = require("aws-sdk");
 const uuid = require("uuid");
+require('dotenv').config();
 
 let exportedMethods = {
     async fetchS3Database() {
@@ -28,8 +29,8 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId: "AKIAIYFQ5JOFMLSVMQVA",
-                    secretAccessKey: "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",
+                    accessKeyId: process.env.ACCESS_KEY_ID,
+                    secretAccessKey: process.env.SECRET_ACCESS_KEY,
                     region: 'us-east-1',
                     signatureVersion: 'v4'
                 })
@@ -114,8 +115,6 @@ let exportedMethods = {
             return false;
         }
     },
-	
-	
 
     async addVideoToRecommendations(userId, videoId) {
         let favoritedVideoArr = new Array();
