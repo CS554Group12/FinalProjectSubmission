@@ -149,12 +149,81 @@ col-md-4 {
    text-decoration: none !important;
    font-stretch: ultra-condensed;
    font-size: 30px;
-   
-   
 }
 
 .showlink:hover {
    background-color: transparent;
    color: white;
    border: 2px solid white;
+}
+
+label input[type="checkbox"] {
+   display: none;
+}
+
+.favorites-btn {
+  top: 0%;
+  right: 0%;
+  position: absolute;
+  display: inline-block;
+}
+
+.favorites-btn .glyphicon {
+   color: gold;
+   position: absolute;
+   top: 0;
+   right: 0;
+   font-size: 50px;
+   margin-right: 20px;
+   padding-top: 10px;
+}
+
+.favorites-btn .add-to-favorites {
+  visibility: hidden;
+  width: 150px;
+  background-color: gray;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 2px 0;
+  position: absolute;
+  z-index: 1;
+  top: 65px;
+  right: -28px;
+  margin-left: -60px;
+  font-size: 15px;
+}
+
+.favorites-btn .glyphicon-star-empty {
+   color: gray;
+}
+ 
+.favorites-btn .glyphicon-star {
+   opacity: 0;
+   transition: opacity 0.2s ease-in-out;
+}
+
+.favorites-btn:hover .glyphicon-star{
+   opacity: 0.5;
+   transition: width 2s;
+   transition-timing-function: ease-in-out;
+}
+
+.favorites-btn .add-to-favorites::after {
+   content: " ";
+   position: absolute;
+   bottom: 100%;
+   left: 50%;
+   margin-left: -5px;
+   border-width: 5px;
+   border-style: solid;
+   border-color: transparent transparent gray transparent;
+}
+
+.favorites-btn:hover .add-to-favorites{
+   visibility: visible;
+}
+
+.favorites-btn input[type="checkbox"]:checked ~ .glyphicon-star {
+   opacity: 1;
 }
