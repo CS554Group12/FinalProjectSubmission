@@ -5,6 +5,8 @@ const videosData = require("./videos");
 const flaskDataSet = require("./dataset");
 var dataSetObj = require("../insert");
 const s3Bucket = "cs554netflix2";
+const aws = require("aws-sdk");
+const uuid = require("uuid");
 
 let exportedMethods = {
     async fetchS3Database() {
@@ -26,12 +28,11 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId: "",
-                    secretAccessKey: "",
+                    accessKeyId: "AKIAIYFQ5JOFMLSVMQVA",
+                    secretAccessKey: "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",
                     region: 'us-east-1',
                     signatureVersion: 'v4'
-                });
-
+                })
                 var signedUrl = new Object();
                 var response = new Object();
                 var s3 = new aws.S3();
