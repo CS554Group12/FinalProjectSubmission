@@ -123,7 +123,7 @@ class ShowList extends Component {
                                        defaultChecked/>
                                        <i class="glyphicon glyphicon-star-empty"></i>
                                        <i class="glyphicon glyphicon-star"></i>
-                                       <span class="add-to-favorites">Add to Favorites</span>
+                                       <span class="add-to-favorites">Favorites</span>
                                  </label>
                               </div>
                               
@@ -150,7 +150,7 @@ class ShowList extends Component {
                                  />
                                  <i class="glyphicon glyphicon-star-empty"></i>
                                  <i class="glyphicon glyphicon-star"></i>
-                                 <span class="add-to-favorites">Add to Favorites</span>
+                                 <span class="add-to-favorites">Favorites</span>
                            </label>
                         </div>
                         
