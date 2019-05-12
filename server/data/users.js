@@ -4,6 +4,7 @@ let videos = mongoCollections.videos;
 const videosData = require("./videos");
 const flaskDataSet = require("./dataset");
 var dataSetObj = require("../insert");
+const s3Bucket = "cs554netflix2";
 
 let exportedMethods = {
     async fetchS3Database() {
