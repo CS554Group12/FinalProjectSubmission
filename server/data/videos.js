@@ -3,6 +3,9 @@ let videos = mongoCollections.videos;
 const s3Bucket = "cs554netflix2";
 var request = require("request");
 let users = mongoCollections.users;
+const data = require("../data");
+const videosData = data.videos;
+const usersData = data.users;
 
 let exportedMethods = {
     async getAllVideos() {
@@ -45,6 +48,8 @@ let exportedMethods = {
 
         return await finalSingleObj;
     },
+	
+	
 
     async addVideoToFavorite(userId, videoId) {
         let videoObj = await this.getVideoById(videoId);
@@ -58,7 +63,7 @@ let exportedMethods = {
                 console.error(error)
                 return
             }
-            console.log(body);
+            
 
         });
         var dbUser = await users();
@@ -71,6 +76,7 @@ let exportedMethods = {
                 }
             });
         }
+		
 
         if (await addToFavStatus) {
             return true;
@@ -78,6 +84,7 @@ let exportedMethods = {
             return false;
         }
     },
+	
 
     async removeVideoFromFavorite(userId, videoId) {
         var dbUser = await users();

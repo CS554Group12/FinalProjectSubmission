@@ -26,8 +26,8 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId: "",
-                    secretAccessKey: "",
+                    accessKeyId: "AKIAJOIIQU4NTTD6LWKQ",
+                    secretAccessKey: "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",
                     region: 'us-east-1',
                     signatureVersion: 'v4'
                 });
@@ -113,6 +113,8 @@ let exportedMethods = {
             return false;
         }
     },
+	
+	
 
     async addVideoToRecommendations(userId, videoId) {
         let favoritedVideoArr = new Array();

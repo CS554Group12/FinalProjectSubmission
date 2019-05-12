@@ -26,11 +26,11 @@ class Show extends Component {
       });
       try {
          const response = await axios.get(
-             `http://localhost:3001/videos/${this.props.match.params.id}`
+             `http://localhost:3001/video/${this.props.match.params.id}`
          );
-		
+
 		   const response1 = await axios.get(
-            `http://localhost:3001/videos/${this.props.match.params.id}`
+            `http://localhost:3001/video/${this.props.match.params.id}`
          );
 
          console.log(response1);
@@ -45,12 +45,12 @@ class Show extends Component {
    render() {
       let body = null;
       const regex = /(<([^>]+)>)/gi;
-      
+
       if (this.state.loading) {
          body = (
             <div>
                <h1>Please Wait...</h1>
-               <br /> 
+               <br />
             </div>
          );
       } else if (this.state.error) {
@@ -61,17 +61,17 @@ class Show extends Component {
          );
       } else {
          body = (
-		 
+
 		 <div className="megaCard" >
-		 
+
 		 <div class="megaContainer">
 		 <br/>
-		<h2><b>{this.state.data1.Key}</b></h2> 
+		<h2><b>{this.state.data1.Key}</b></h2>
 		<br/>
 		</div>
-		
-               
-			   
+
+
+
 			   		   	<Player class="video-react"
       playsInline
       poster="/assets/poster.png"
@@ -89,8 +89,8 @@ class Show extends Component {
 	<br />
 	<br />
 	<br />
-	
-	     <h5 >	
+
+	     <h5 >
                   {this.state.data1.description}
                </h5>
 					<br />
@@ -98,12 +98,12 @@ class Show extends Component {
 	<br />
 	<br />
 		</div>
-					
-					
-           
 
-			
-		
+
+
+
+
+
          );
       }
       return body;
