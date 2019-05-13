@@ -31,8 +31,8 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId : "AKIAID3TAQV75TVPOU4A",
-                    secretAccessKey : "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",
+                    accessKeyId : "",
+                    secretAccessKey : "",
                     region: 'us-east-1',
                     signatureVersion: 'v4'
                 })
