@@ -152,20 +152,20 @@ class ShowList extends Component {
                return(
                   <li key={shows.id}>
                      <div className="card">
-                        <div class="favorites-btn">
-                           <label for={shows.id} class="favorites-btn">
+                        <div className="favorites-btn">
+                           <label for={shows.id} className="favorites-btn">
                               <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}
                                  />
-                                 <i class="glyphicon glyphicon-star-empty"></i>
-                                 <i class="glyphicon glyphicon-star"></i>
-                                 <span class="add-to-favorites">Favorites</span>
+                                 <i className="glyphicon glyphicon-star-empty"></i>
+                                 <i className="glyphicon glyphicon-star"></i>
+                                 <span className="add-to-favorites">Favorites</span>
                            </label>
                         </div>
                         
                         <Link to={`/videos/${shows.id}/`}>
                            <br/>
                            <img src= {shows.posterUrl} alt="Avatar" width="500px"/>
-                           <div class="container">
+                           <div className="container">
                            <br/>
                               <h4>{shows.Key}</h4> 
                            </div>

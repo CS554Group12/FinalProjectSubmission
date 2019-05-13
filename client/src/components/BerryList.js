@@ -50,6 +50,31 @@ class BerryList extends Component {
 			this.getShows();
 		});
 	}
+	
+	   handleClick = (e) => {
+      let value = e.target.value;
+      let isChecked = e.target.checked;
+      // console.log(value);
+      // console.log(isChecked);
+      
+      if (isChecked === true) {
+         axios.delete(`http://localhost:3001/favorites/`+ value)
+            .then(response=>{
+               console.log(response.data);
+            });
+      }
+
+      if (isChecked === false) {
+         axios.delete(`http://localhost:3001/favorites/`+ value)
+            .then(response=>{
+               console.log(response.data);
+            });
+      }
+   }
+   
+   onSubmit(e) {
+      e.preventDefault();
+   }
       
 	onSubmit(e) {
 			e.preventDefault();
@@ -57,7 +82,7 @@ class BerryList extends Component {
 
    searchShows(){
 		try {
-			//const response = await axios.get('https://pokeapi.co/api/v2/pokemon' + this.state.searchTerm);
+			
 			const response =  axios.get(this.state.nextLink);
 			this.setState({searchData: response.data, searchTerm: true});
 		} catch (e) {
@@ -86,6 +111,15 @@ class BerryList extends Component {
 					
 			<div>
 			<div className="card" >
+						<div className="favorites-btn">
+                           <label for={shows.id} className="favorites-btn">
+                              <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}
+                                 defaultChecked/>
+                                 <i className="glyphicon glyphicon-star"></i>
+								 <i className="glyphicon glyphicon-star-empty"></i>
+                                 <span className="add-to-favorites">Favorites</span>
+                           </label>
+                        </div>
 				<Link to={`/favorite/${this.state.data && this.state.data[cnt].id}/`}>
 					<li >
 					<br/>
