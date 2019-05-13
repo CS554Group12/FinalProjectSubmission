@@ -31,8 +31,8 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId : "",
-                    secretAccessKey : "",
+                    accessKeyId : process.env.ACCESS_KEY_ID,
+                    secretAccessKey : process.env.SECRET_ACCESS_KEY,
                     region: 'us-east-1',
                     signatureVersion: 'v4'
                 })
@@ -40,13 +40,13 @@ let exportedMethods = {
                 var response = new Object();
 				var responsePoster = new Object();
 				var signedUrlPoster = new Object();
-				
+
                 var s3 = new aws.S3();
                 response = await s3.listObjectsV2({ // Uncomment when you use aws
                     Bucket: s3Bucket
                 }).promise();
-				
-				
+
+
 				responsePoster = await s3.listObjectsV2({ // Uncomment when you use aws
                     Bucket: s3BucketPosters
                 }).promise();
@@ -70,8 +70,8 @@ let exportedMethods = {
                     videoObj[cnt] = await url;
                     await cnt++;
                 }
-				
-				
+
+
 				for (let i = 0; i < await responsePoster.Contents.length; i++) {
                     let newKey = await responsePoster.Contents[i].Key;
                     params = {
@@ -91,8 +91,8 @@ let exportedMethods = {
                     videoObj[cnt] = await urlPoster;
                     await cnt++;
                 }
-				
-				
+
+
 
                 for (let i = 0; i < await response.Contents.length; i++) {
                     for (let j = 0; j < await dataSetObj["dataSetArr"].length; j++) {
@@ -102,8 +102,8 @@ let exportedMethods = {
                         }
                     }
                 }
-				
-				
+
+
 				for (let i = 0; i < await responsePoster.Contents.length; i++) {
                     for (let j = 0; j < await dataSetObj["dataSetArr"].length; j++) {
                         if (await responsePoster.Contents[i].Key == await dataSetObj["dataSetArr"][j].Name.replace([":"], "") || await responsePoster.Contents[i].Key == await dataSetObj["dataSetArr"][j].Name.replace([","], "")) {
@@ -112,22 +112,22 @@ let exportedMethods = {
                         }
                     }
                 }
-				
-				
+
+
 				for (let i = 0; i < await response.Contents.length; i++) {
                     for (let j = 0; j < await responsePoster.Contents.length; j++) {
                         if (await responsePoster.Contents[j].id == await response.Contents[i].id) {
                             response.Contents[i]["posterUrl"] = await responsePoster.Contents[j]["url"];
-                            
+
                         }
                     }
                 }
-				
+
 
                 var dbVideo = await videos();
 				var dbPosters = await posters();
                 await dbVideo.insertOne(await response); // need to uncomment when we use AWS S3
-				await dbPosters.insertOne(await responsePoster); 
+				await dbPosters.insertOne(await responsePoster);
                 await videosData.addVideoToFavorite(1, "2");
                 await this.addVideoToRecommendations(1, "2");
             } catch (e) {
