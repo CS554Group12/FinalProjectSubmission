@@ -115,8 +115,8 @@ class BerryList extends Component {
                            <label for={shows.id} className="favorites-btn">
                               <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}
                                  defaultChecked/>
+											<i className="glyphicon glyphicon-star-empty"></i>
                                  <i className="glyphicon glyphicon-star"></i>
-								 <i className="glyphicon glyphicon-star-empty"></i>
                                  <span className="add-to-favorites">Favorites</span>
                            </label>
                         </div>
