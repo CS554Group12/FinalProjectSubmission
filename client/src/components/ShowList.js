@@ -14,7 +14,7 @@ class ShowList extends Component {
          loading: false,
          searchTerm: undefined,
          searchData: undefined,
-         currentLink: 'https://pokeapi.co/api/v2/pokemon',
+         currentLink: '',
          nextLink: undefined,
          prevLink: undefined,
          offset : 0,
@@ -115,6 +115,7 @@ class ShowList extends Component {
                for (var i = 0; i < favoritesList.length; i++) {
                   if (favoritesList[i] === shows.id) {
                      return(
+					 <div>
                         <li key={shows.id}>
                            <div className="card">
                               <div class="favorites-btn">
@@ -129,14 +130,21 @@ class ShowList extends Component {
                               
                               <Link to={`/videos/${shows.id}/`}>
                                  <br/>
-                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3w6QYtXhSCXyAeOIxEzzhJVaOUmRAQSbK1TTw_EtJ4unPuda_TA" alt="Avatar" width="500px"/>
+                                 <img src= {shows.posterUrl} alt="Avatar" width="500px"/>
                                  <div class="container">
                                  <br/>
                                     <h4>{shows.Key}</h4> 
                                  </div>
                               </Link>
+							  
+							  
                            </div>
+						   
                         </li>
+						<br/>
+						
+						
+					</div>
                      );
                   }
                }
@@ -156,13 +164,17 @@ class ShowList extends Component {
                         
                         <Link to={`/videos/${shows.id}/`}>
                            <br/>
-                           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3w6QYtXhSCXyAeOIxEzzhJVaOUmRAQSbK1TTw_EtJ4unPuda_TA" alt="Avatar" width="500px"/>
+                           <img src= {shows.posterUrl} alt="Avatar" width="500px"/>
                            <div class="container">
                            <br/>
                               <h4>{shows.Key}</h4> 
                            </div>
                         </Link>
                      </div>
+					 <br/>
+					 <br/>
+					 <br/>
+					 <br/>
                   </li>
                );
             });

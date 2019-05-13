@@ -89,7 +89,7 @@ class BerryList extends Component {
 				<Link to={`/favorite/${this.state.data && this.state.data[cnt].id}/`}>
 					<li >
 					<br/>
-						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3w6QYtXhSCXyAeOIxEzzhJVaOUmRAQSbK1TTw_EtJ4unPuda_TA" alt="Avatar" width="500px"/>
+						<img src={shows.posterUrl} alt="Avatar" width="500px"/>
 					<div class="container">
 					<br/>
 						<h4><b>{shows.Key}</b></h4> 
@@ -99,6 +99,10 @@ class BerryList extends Component {
 			</div>
 			<br/>
 			<br/>
+			<br/>
+					 <br/>
+					 <br/>
+					 <br/>
 			</div>
 		));
  

@@ -66,7 +66,7 @@ class Berry extends Component {
                </div>
 		         <Player class="video-react"
                   playsInline
-                  poster="/assets/poster.png"
+                  poster={this.state.data.posterUrl}
                   src={this.state.data["url"]} type="video/mp4"
                   fluid={false}
                   width={400}
@@ -80,8 +80,9 @@ class Berry extends Component {
                <br />
                <br />
                <br />
-               <h5 >	
-                  {this.state.data && this.state.data["description"]}
+               <h3>Genre</h3>	
+	     <h5 >
+                  {this.state.data.Genre}
                </h5>
 					<br />
                <br />

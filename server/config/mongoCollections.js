@@ -19,5 +19,6 @@ const getCollectionFn = collection => {
 module.exports = {
   videos: getCollectionFn("Videos"),
   users: getCollectionFn("Users"),
-  dataset: getCollectionFn("DataSet")
+  dataset: getCollectionFn("DataSet"),
+  posters : getCollectionFn("Posters")
 };

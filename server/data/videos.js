@@ -1,11 +1,14 @@
 const mongoCollections = require("../config/mongoCollections");
 let videos = mongoCollections.videos;
 const s3Bucket = "cs554netflix2";
+const s3BucketPosters = "cs554netflix2posters";
 var request = require("request");
 let users = mongoCollections.users;
 const data = require("../data");
 const videosData = data.videos;
 const usersData = data.users;
+let posters = mongoCollections.posters;
+
 
 let exportedMethods = {
     async getAllVideos() {
@@ -13,6 +16,15 @@ let exportedMethods = {
         let AllVideosObj = await dbVideo.findOne({
             "Name": s3Bucket
         });
+		
+		var dbPosters = await posters();
+        let AllPosterObj = await dbPosters.findOne({
+            "Name": s3BucketPosters
+        });
+		
+		
+		
+		
         let AllVideosArr = await AllVideosObj["Contents"];
         return await AllVideosArr;
     },

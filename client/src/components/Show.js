@@ -74,7 +74,7 @@ class Show extends Component {
 
 			   		   	<Player class="video-react"
       playsInline
-      poster="/assets/poster.png"
+      poster={this.state.data1.posterUrl}
       src={this.state.data1["url"]} type="video/mp4"
 	  fluid={false}
         width={400}
@@ -89,9 +89,10 @@ class Show extends Component {
 	<br />
 	<br />
 	<br />
-
+			
+		<h3>Genre</h3>	
 	     <h5 >
-                  {this.state.data1.description}
+                  {this.state.data1.Genre}
                </h5>
 					<br />
 	<br />
