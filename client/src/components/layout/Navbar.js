@@ -13,13 +13,10 @@ const Navbar = (props) => {
   
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
-        <Link to='/video' className="brand-logo">Netflix</Link>
+        <a href='/' className="brand-logo">Netflix</a>
         {links}
       </div>
     </nav>
-
-    
-
   )
 }
 
