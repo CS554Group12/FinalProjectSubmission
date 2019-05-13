@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import ShowList from './ShowList';
 import PokeShow from './Show';
-import Pokemon from './Pokemon';
 import Berry from './Berry';
 import BerryList from './BerryList';
 import MachineList from './MachineList';
 import Machine from './Machine';
-import DescriptionContainer from './DescriptionContainer';
+import HomePageCarousel from './HomePageCarousel';
+//import Pokemon from './Pokemon';
+//import DescriptionContainer from './DescriptionContainer';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
@@ -25,7 +26,7 @@ class ShowsContainer extends Component {
                 <Route path="/favorite/:id" exact component={Berry}/>
                 <Route path="/recommended/page/" exact component={MachineList}/>
                 <Route path="/recommended/:id" exact component={Machine}/>
-                <Route path="/" component={DescriptionContainer}/>
+                <Route path="/" component={HomePageCarousel}/>
             </Switch>
         </div>);
     }

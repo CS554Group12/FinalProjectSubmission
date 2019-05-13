@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
 
-class App extends Component {
+class App_1 extends Component {
 
     constructor(props) {
         super(props);
@@ -62,14 +62,15 @@ class App extends Component {
                     <br/>
 
                 </header>
-                <br/>
-
-                <br/>
+                
                 <div className="App-body">
-
-                    <Route path="/" component={ShowsContainer}/>
-
-                </div>
+                <p>Enjoy the videos you love with non-stop streaming.</p> 
+                <h6>Registered users get personalized video recommendations in their account.
+                  Add videos to your favorites list when logged in and watch it at one place.</h6>
+                <br/>
+                <br/>
+                <Route path="/" component={ShowsContainer} />
+               </div>
             </div>
         </Router>);
     }
@@ -79,4 +80,4 @@ const mapStateToProps = (state) => {
     return {auth: state.firebase.auth}
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App_1);
