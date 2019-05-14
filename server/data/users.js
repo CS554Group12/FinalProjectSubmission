@@ -31,8 +31,8 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId : "",
-                    secretAccessKey : "",
+                    accessKeyId : process.env.ACCESS_KEY_ID,
+                    secretAccessKey : process.env.SECRET_ACCESS_KEY,
                     region: 'us-east-1',
                     signatureVersion: 'v4'
                 })
@@ -129,10 +129,10 @@ let exportedMethods = {
 				var dbUsers = await users();
                 await dbVideo.insertOne(await response); // need to uncomment when we use AWS S3
 				await dbPosters.insertOne(await responsePoster);
-				
-				
-				
-				await dbUsers.insertOne({email : "test@gmail.com", firstName : "Shrikant", lastName : "Sherkar", FavoriteVideos : [], RecommendedVideos : [], loggedIn : false, 
+
+
+
+				await dbUsers.insertOne({email : "test@gmail.com", firstName : "Shrikant", lastName : "Sherkar", FavoriteVideos : [], RecommendedVideos : [], loggedIn : false,
 				id : uuid()});
                 await videosData.addVideoToFavorite("test@gmail.com", "34");
                 await this.addVideoToRecommendations("test@gmail.com", "34");
