@@ -12,7 +12,7 @@ import HomePageCarousel from './HomePageCarousel';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
-class ShowsContainer extends Component {
+class VideosContainer extends Component {
     render() {
         const {auth} = this.props;
         if (!auth.uid)
@@ -37,4 +37,4 @@ const mapStateToProps = (state) => {
     return {auth: state.firebase.auth, profile: state.firebase.profile}
 };
 
-export default connect(mapStateToProps)(ShowsContainer);
+export default connect(mapStateToProps)(VideosContainer);

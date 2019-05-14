@@ -27,7 +27,6 @@ class RecommendedList extends Component {
 
     async getShows() {
         try {
-            console.log(this.props.match.params.page);
             if (!this.props.match.params.page) {
                 this.offset = 0;
                 const response = await axios.get(`http://localhost:3001/recommendation/`);

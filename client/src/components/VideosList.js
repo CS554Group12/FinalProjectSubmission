@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import '../App.css';
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom';
 
 class VideosList extends Component {
     constructor(props) {
@@ -12,14 +12,9 @@ class VideosList extends Component {
         this.state = {
             data: undefined,
             isfavorite: undefined,
-            loading: false,
             searchTerm: undefined,
-            searchData: undefined,
             currentLink: '',
-            nextLink: undefined,
-            prevLink: undefined,
-            offset: 0,
-            limit: 0
+            filtered: null
         };
         this.selected = {};
         this.handleChange = this.handleChange.bind(this);
@@ -28,7 +23,6 @@ class VideosList extends Component {
 
     async getShows() {
         try {
-            console.log(this.props.match.params.page);
             this.offset = 0;
             const response = await axios.get(`http://localhost:3001/video`);
             const favorites = await axios.get(`http://localhost:3001/favorites`);
@@ -72,14 +66,14 @@ class VideosList extends Component {
         e.preventDefault();
     }
 
-    searchShows() {
-        try {
-            //const response = await axios.get('https://pokeapi.co/api/v2/pokemon' + this.state.searchTerm);
-            const response = axios.get(this.state.nextLink);
-            this.setState({searchData: response.data, searchTerm: true});
-        } catch (e) {
-            console.log(e);
-        }
+    searchShows(e) {
+        console.log(e.target.value);
+        var search = e.target.value;
+        var filtered = this.state.data.filter((show) => {
+            return show.Key.toLowerCase().includes(search.toLowerCase());
+        });
+        console.log(filtered);
+        this.setState({filtered});
     }
 
     render() {
@@ -96,10 +90,11 @@ class VideosList extends Component {
                 return videos.id;
             });
             // console.log(favoritesList);
-            cols = this.state.data && this.state.data.map((shows, cnt) => {
-                for (var i = 0; i < favoritesList.length; i++) {
-                    if (favoritesList[i] === shows.id) {
-                        return (<div className="col-md-4 col-sm-6" key={shows.id}>
+            if (this.state.filtered) {
+                cols = this.state.filtered.map((shows, cnt) => {
+                    for (var i = 0; i < favoritesList.length; i++) {
+                        if (favoritesList[i] === shows.id) {
+                            return (<div className="col-md-4 col-sm-6" key={shows.id}>
                                 <div className="card">
                                     <div className="favorites-btn">
                                         <label htmlFor={shows.id} className="favorites-btn">
@@ -121,43 +116,108 @@ class VideosList extends Component {
 
                                 </div>
 
-                            <br/>
-
-                        </div>);
-                    }
-                }
-
-                return (<div className="col-md-4 col-sm-6" key={shows.id}>
-                    <div className="card">
-                        <div className="favorites-btn">
-                            <label htmlFor={shows.id} className="favorites-btn">
-                                <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}/>
-                                <i className="glyphicon glyphicon-star-empty"></i>
-                                <i className="glyphicon glyphicon-star"></i>
-                                <span className="add-to-favorites">Favorites</span>
-                            </label>
-                        </div>
-
-                        <Link to={`/videos/${shows.id}/`}>
-                            <br/>
-                            <div className="container">
-                                <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                 <br/>
-                                <h4>{shows.Key}</h4>
+
+                            </div>);
+                        }
+                    }
+
+                    return (<div className="col-md-4 col-sm-6" key={shows.id}>
+                        <div className="card">
+                            <div className="favorites-btn">
+                                <label htmlFor={shows.id} className="favorites-btn">
+                                    <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}/>
+                                    <i className="glyphicon glyphicon-star-empty"></i>
+                                    <i className="glyphicon glyphicon-star"></i>
+                                    <span className="add-to-favorites">Favorites</span>
+                                </label>
                             </div>
-                        </Link>
-                    </div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                </div>);
-            });
+
+                            <Link to={`/videos/${shows.id}/`}>
+                                <br/>
+                                <div className="container">
+                                    <img src={shows.posterUrl} alt="Avatar" width="100%"/>
+                                    <br/>
+                                    <h4>{shows.Key}</h4>
+                                </div>
+                            </Link>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>);
+                });
+            } else {
+                cols = this.state.data && this.state.data.map((shows, cnt) => {
+                    for (var i = 0; i < favoritesList.length; i++) {
+                        if (favoritesList[i] === shows.id) {
+                            return (<div className="col-md-4 col-sm-6" key={shows.id}>
+                                <div className="card">
+                                    <div className="favorites-btn">
+                                        <label htmlFor={shows.id} className="favorites-btn">
+                                            <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick} defaultChecked="defaultChecked"/>
+                                            <i className="glyphicon glyphicon-star-empty"></i>
+                                            <i className="glyphicon glyphicon-star"></i>
+                                            <span className="add-to-favorites">Favorites</span>
+                                        </label>
+                                    </div>
+
+                                    <Link to={`/videos/${shows.id}/`}>
+                                        <br/>
+                                        <div className="container">
+                                            <img src={shows.posterUrl} alt="Avatar" width="100%"/>
+                                            <br/>
+                                            <h4>{shows.Key}</h4>
+                                        </div>
+                                    </Link>
+
+                                </div>
+
+                                <br/>
+
+                            </div>);
+                        }
+                    }
+
+                    return (<div className="col-md-4 col-sm-6" key={shows.id}>
+                        <div className="card">
+                            <div className="favorites-btn">
+                                <label htmlFor={shows.id} className="favorites-btn">
+                                    <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}/>
+                                    <i className="glyphicon glyphicon-star-empty"></i>
+                                    <i className="glyphicon glyphicon-star"></i>
+                                    <span className="add-to-favorites">Favorites</span>
+                                </label>
+                            </div>
+
+                            <Link to={`/videos/${shows.id}/`}>
+                                <br/>
+                                <div className="container">
+                                    <img src={shows.posterUrl} alt="Avatar" width="100%"/>
+                                    <br/>
+                                    <h4>{shows.Key}</h4>
+                                </div>
+                            </Link>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>);
+                });
+            }
 
             body = (<div>
-                <h1>Videos</h1>
-                <br/>
-                <br/>
+                <div className="container">
+                    <div className="row justify-content-md-center">
+                        <div className="col-md-8">
+                                <p style={{color: '#424242'}}>Search:&nbsp;&nbsp;
+                                <input type="text" name="searchTerm" onChange={this.searchShows} style={{width: "200px"}} placeholder="Search"/>
+                                </p>
+                        </div>
+                    </div>
+                </div>
                 <div className="row">
                     {cols}
                 </div>

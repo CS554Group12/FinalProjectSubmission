@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import axios from 'axios';
-import ShowsContainer from './components/ShowsContainer';
+import VideosContainer from './components/VideosContainer';
 import {connect} from 'react-redux'
 
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
@@ -67,7 +67,7 @@ class App_1 extends Component {
                   Add videos to your favorites list when logged in and watch it at one place.</p>
                 <br/>
 
-                <Route path="/" component={ShowsContainer} />
+                <Route path="/" component={VideosContainer} />
                </div>
             </div>
         </Router>);
