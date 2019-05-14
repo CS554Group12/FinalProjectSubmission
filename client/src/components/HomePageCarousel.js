@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
-// import { Route, Switch } from 'react-router-dom';
-// import ShowList from './ShowList';
-// import PokeShow from './Show';
-// import Pokemon from './Pokemon';
-// import Berry from './Berry';
-// import BerryList from './BerryList';
-// import MachineList from './MachineList';
-// import Machine from './Machine';
-// import jumanji from '../img/jumanji.png';
-// import toy_story from '../img/toy_story.png';
-// import golden_eye from '../img/golden_eye.png';
+import Carousel from 'react-bootstrap/Carousel'
+import jumanji from '../img/jumanji.png';
+import toy_story from '../img/toy_story.png';
+import golden_eye from '../img/golden_eye.png';
+import space_jam from '../img/space_jam.png';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
@@ -41,7 +34,7 @@ class ControlledCarousel extends Component {
 
         const { index, direction } = this.state;
         return (
-        <Carousel
+          <Carousel
           activeIndex={index}
           direction={direction}
           onSelect={this.handleSelect}
@@ -50,40 +43,53 @@ class ControlledCarousel extends Component {
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={require('../img/jumanji.png')}
+              src={jumanji}
               alt="Jumanji (1995)"
             />
-            <Carousel.Caption>
-               <h3>Jumanji (1995)</h3>
-               <p>PG 1995 ‧ Fantasy/Thriller ‧ 1h 44m</p>
-               <p>Adventure ‧ Fantasy ‧ Family</p>
-             </Carousel.Caption>
+            <div className="text-block"> 
+              <h3>Jumanji (1995)</h3>
+              <p>PG 1995 ‧ Fantasy/Thriller ‧ 1h 44m</p>
+              <p>Adventure ‧ Fantasy ‧ Family</p>
+            </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={require('../img/toy_story.png')}
+              src={toy_story}
               alt="Toy Story (1995)"
             />
-            <Carousel.Caption>
+            <div className="text-block">
               <h3>Toy Story (1995)</h3>
               <p>G 1995 ‧ Fantasy/Adventure ‧ 1h 21m</p>
               <p>Animation ‧ Comedy ‧ Family</p>
-            </Carousel.Caption>
+            </div>
           </Carousel.Item>
 
           <Carousel.Item>
             <img
               className="d-block w-100"
-              src={require('../img/golden_eye.png')}
+              src={golden_eye}
               alt="GoldenEye (1995)"
             />
-            <Carousel.Caption>
+            <div className="text-block">
               <h3>GoldenEye (1995)</h3>
               <p>PG-13 1995 ‧ Thriller/Action ‧ 2h 10m</p>
               <p>Action ‧ Adventure ‧ Thriller</p>
-            </Carousel.Caption>
+            </div>
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={space_jam}
+              alt="Space Jam (1996)"
+            />
+            <div className="text-block">
+              <h3>Space Jam (1996)</h3>
+              <p>PG 1996 ‧ Fantasy/Sci-fi ‧ 1h 40m</p>
+              <p>Animation ‧ Adventure ‧ Comedy ‧ Family</p>
+            </div>
           </Carousel.Item>
         </Carousel>
       );
