@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+
 export const signIn = (credentials) => {
   return (dispatch, getState, {getFirebase}) => {
     const firebase = getFirebase();
@@ -20,7 +23,11 @@ export const signOut = () => {
     const firebase = getFirebase();
 
     firebase.auth().signOut().then(() => {
-      dispatch({ type: 'SIGNOUT_SUCCESS' })
+      dispatch({ type: 'SIGNOUT_SUCCESS' });
+	  
+	   axios.post(`http://localhost:3001/signOut`).then(response => {
+                console.log(response.data);
+            });
     });
   }
 }

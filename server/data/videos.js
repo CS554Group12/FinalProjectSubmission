@@ -66,22 +66,11 @@ let exportedMethods = {
     async addVideoToFavorite(userId, videoId) {
         let videoObj = await this.getVideoById(videoId);
         let recoVideoObj = new Object();
-        var recommendedVideosArr = await request.post('http://localhost:5000/', {
-            json: {
-                favorites: [parseInt(videoId)]
-            }
-        }, (error, res, body) => {
-            if (error) {
-                console.error(error)
-                return
-            }
-            
-
-        });
+     
         var dbUser = await users();
         if (await videoObj) {
             var addToFavStatus = await dbUser.updateOne({
-                "id": userId
+                "email": userId
             }, {
                 $push: {
                     "FavoriteVideos": await videoObj
@@ -103,7 +92,7 @@ let exportedMethods = {
         var videoObj = await this.getVideoById(videoId);
         if (videoObj) {
             var removeFromFavStatus = dbUser.updateOne({
-                "id": userId
+                "email": userId
             }, {
                 $pull: {
                     "FavoriteVideos": videoObj

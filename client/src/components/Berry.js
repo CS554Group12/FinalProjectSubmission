@@ -80,10 +80,12 @@ class Berry extends Component {
                <br />
                <br />
                <br />
+			   <div className="container">
                <h3>Genre</h3>	
 	     <h5 >
                   {this.state.data.Genre}
                </h5>
+			   </div>
 					<br />
                <br />
                <br />
