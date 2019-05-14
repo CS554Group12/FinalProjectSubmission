@@ -9500,7 +9500,7 @@ dataSetArr : [
     },
     {
         "id": 1968,
-        "Name": "Breakfast Club The (1985)",
+        "Name": "The Breakfast Club (1985)",
         "Genre": "Comedy,Drama"
     },
     {

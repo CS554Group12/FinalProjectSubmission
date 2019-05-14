@@ -2,10 +2,6 @@
    text-align: center;
 }
 
-html {
-   background-color: white;
-}
-
 .SubApp {
    text-align: right;
    color: white;
@@ -64,9 +60,13 @@ h4 {
    height: 80px;
 }
 
+/* .nav-wrapper {
+   position: fixed;
+} */
+
 .App-header {
    background-color: #424242;
-   height: 220px;
+   height: 200px;
    padding: 15px;
    color: #222;
 }
@@ -89,9 +89,21 @@ h1 {
    padding: 15px;
    border-radius: 2px;
    font-size: 20px;
-   font-weight: bold;
    color: #424242;
+   max-width: 700px;
+   height: auto;
+   margin: auto;
+   text-align: center;
 } 
+
+h2.App-body {
+   font-size: 25px;
+   font-weight: bold;
+}
+
+p.App-body {
+   font-size: 20px;
+}
 
 .video-react1 {
   margin-left: 100;
@@ -250,15 +262,53 @@ label input[type="checkbox"] {
    opacity: 1;
 }
 
-.carousel .slide {
-   height: 80%;
-   width: 80%; 
+.carousel {
+   height: 650px;
+   width: 100%;
    margin: auto;
-   /* font-weight: bold;
-   color: black;
-   text-shadow: 2px 2px darkgrey;   */
+   font-weight: bold;
 }
 
 .carousel:hover {
    box-shadow: 0 8px 16px 0 rgb(189, 187, 187);
+}
+
+.carousel-inner {
+   height: 100%;
+   width: 100%;
+   margin: auto;
+   position: relative;
+}
+
+.carousel-item .carousel-item {
+   height: 100%;
+   width: 100%;
+   margin: auto;
+   position: relative;
+}
+ 
+div.carousel-item.active {
+   height: 100%;
+   width: 100%;
+   margin: auto;
+   position: relative;
+   visibility: hidden;
+}
+
+img.d-block.w-100 {
+   visibility: visible;
+   max-width: 700px;
+   margin: auto;
+}
+
+div.text-block {
+  visibility: visible;
+  position: absolute;
+  bottom: 50px;
+  margin-left: 170px;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.699);
+  font-weight: bold;
 }

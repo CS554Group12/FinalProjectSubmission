@@ -43,7 +43,7 @@ class App_1 extends Component {
         return (<Router>
             <div className="App">
                 <header className="App-header">
-
+                    <br/>
                     <br/>
                     <br/>
                     <h1 className="App-title"></h1>
@@ -64,11 +64,13 @@ class App_1 extends Component {
                 </header>
                 
                 <div className="App-body">
-                <p>Enjoy the videos you love with non-stop streaming.</p> 
-                <h6>Registered users get personalized video recommendations in their account.
-                  Add videos to your favorites list when logged in and watch it at one place.</h6>
                 <br/>
+                
+                <h2 className="App-body">Enjoy the videos you love with non-stop streaming.</h2> 
+                <p className="App-body">Registered users get personalized video recommendations in their account.
+                  Add videos to your favorites list when logged in and watch it at one place.</p>
                 <br/>
+                
                 <Route path="/" component={ShowsContainer} />
                </div>
             </div>
