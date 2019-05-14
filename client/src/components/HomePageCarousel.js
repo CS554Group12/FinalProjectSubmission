@@ -47,7 +47,7 @@ class ControlledCarousel extends Component {
               alt="Jumanji (1995)"
             />
             <div className="text-block"> 
-              <h3>Jumanji (1995)</h3>
+              <h2 className="text-block">Jumanji (1995)</h2>
               <p>PG 1995 ‧ Fantasy/Thriller ‧ 1h 44m</p>
               <p>Adventure ‧ Fantasy ‧ Family</p>
             </div>
@@ -60,7 +60,7 @@ class ControlledCarousel extends Component {
               alt="Toy Story (1995)"
             />
             <div className="text-block">
-              <h3>Toy Story (1995)</h3>
+              <h2 className="text-block">Toy Story (1995)</h2>
               <p>G 1995 ‧ Fantasy/Adventure ‧ 1h 21m</p>
               <p>Animation ‧ Comedy ‧ Family</p>
             </div>
@@ -73,7 +73,7 @@ class ControlledCarousel extends Component {
               alt="GoldenEye (1995)"
             />
             <div className="text-block">
-              <h3>GoldenEye (1995)</h3>
+              <h2 className="text-block">GoldenEye (1995)</h2>
               <p>PG-13 1995 ‧ Thriller/Action ‧ 2h 10m</p>
               <p>Action ‧ Adventure ‧ Thriller</p>
             </div>
@@ -86,7 +86,7 @@ class ControlledCarousel extends Component {
               alt="Space Jam (1996)"
             />
             <div className="text-block">
-              <h3>Space Jam (1996)</h3>
+              <h2 className="text-block">Space Jam (1996)</h2>
               <p>PG 1996 ‧ Fantasy/Sci-fi ‧ 1h 40m</p>
               <p>Animation ‧ Adventure ‧ Comedy ‧ Family</p>
             </div>

@@ -35,3 +35,15 @@ input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: red !important;
 }
+
+a.red.lighten-1 {
+  background-color: #e6241c !important;
+}
+
+button.pink.lighten-1 {
+  background-color: #e60e6b !important;
+}
+
+.input-field>label {
+  color: #767676;
+}

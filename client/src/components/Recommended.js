@@ -44,12 +44,12 @@ class Recommended extends Component {
                         <b>{this.state.data && this.state.data.Key}</b>
                     </h2>
                 </div>
-                <Player class="video-react" playsInline poster={this.state.data.posterUrl} src={this.state.data["url"]} type="video/mp4" fluid={false} width={800} height={400} marginLeft="200" marginRight="200" marginBottom="200" marginTop="200"/>
+                <Player class="video-react" playsInline poster={this.state.data.posterUrl} src={this.state.data["url"]} type="video/mp4" />
                 <div className="container">
                     <h3>Genre</h3>
-                    <h5 >
+                    <h4>
                         {this.state.data.Genre}
-                    </h5>
+                    </h4>
                 </div>
                 <br/>
             </div>);

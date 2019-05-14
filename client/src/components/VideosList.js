@@ -110,7 +110,7 @@ class VideosList extends Component {
                                         <div className="container">
                                             <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                             <br/>
-                                            <h4>{shows.Key}</h4>
+                                            <h2>{shows.Key}</h2>
                                         </div>
                                     </Link>
 
@@ -138,7 +138,7 @@ class VideosList extends Component {
                                 <div className="container">
                                     <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                     <br/>
-                                    <h4>{shows.Key}</h4>
+                                    <h2>{shows.Key}</h2>
                                 </div>
                             </Link>
                         </div>
@@ -168,7 +168,7 @@ class VideosList extends Component {
                                         <div className="container">
                                             <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                             <br/>
-                                            <h4>{shows.Key}</h4>
+                                            <h2>{shows.Key}</h2>
                                         </div>
                                     </Link>
 
@@ -196,7 +196,7 @@ class VideosList extends Component {
                                 <div className="container">
                                     <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                     <br/>
-                                    <h4>{shows.Key}</h4>
+                                    <h2>{shows.Key}</h2>
                                 </div>
                             </Link>
                         </div>
@@ -212,9 +212,8 @@ class VideosList extends Component {
                 <div className="container">
                     <div className="row justify-content-md-center">
                         <div className="col-md-8">
-                                <p style={{color: '#424242'}}>Search:&nbsp;&nbsp;
-                                <input type="text" name="searchTerm" onChange={this.searchShows} style={{width: "200px"}} placeholder="Search"/>
-                                </p>
+                                <label for="search" className="search">Search:&nbsp;&nbsp;</label>
+                                <input className="search" id = "search" type="text" name="searchTerm" onChange={this.searchShows} style={{width: "200px"}} placeholder="Search.."/>
                         </div>
                     </div>
                 </div>
