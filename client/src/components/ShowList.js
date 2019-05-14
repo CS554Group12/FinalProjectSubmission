@@ -112,8 +112,8 @@ class ShowList extends Component {
             li = this.state.data && this.state.data.map((shows, cnt) => {
                 for (var i = 0; i < favoritesList.length; i++) {
                     if (favoritesList[i] === shows.id) {
-                        return (<div>
-                            <li key={shows.id}>
+                        return (<div className="col-md-4">
+                            <div key={shows.id}>
                                 <div className="card">
                                     <div className="favorites-btn">
                                         <label for={shows.id} className="favorites-btn">
@@ -135,14 +135,14 @@ class ShowList extends Component {
 
                                 </div>
 
-                            </li>
+                            </div>
                             <br/>
 
                         </div>);
                     }
                 }
 
-                return (<li key={shows.id}>
+                return (<div className="col-md-4" key={shows.id}>
                     <div className="card">
                         <div className="favorites-btn">
                             <label for={shows.id} className="favorites-btn">
@@ -166,14 +166,16 @@ class ShowList extends Component {
                     <br/>
                     <br/>
                     <br/>
-                </li>);
+                </div>);
             });
 
             body = (<div>
                 <h1>Videos</h1>
                 <br/>
                 <br/>
-                <ul className="list-unstyled">{li}</ul>
+                <div className="row">
+                    {li}
+                </div>
             </div>);
         }
         return body;
