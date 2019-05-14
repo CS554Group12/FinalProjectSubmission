@@ -1,5 +1,5 @@
 
-module.exports = { 
+module.exports = {
 id : 1,
 status : "true",
 dataSetArr : [
@@ -9500,7 +9500,7 @@ dataSetArr : [
     },
     {
         "id": 1968,
-        "Name": "The Breakfast Club (1985)",
+        "Name": "Breakfast Club The (1985)",
         "Genre": "Comedy,Drama"
     },
     {
