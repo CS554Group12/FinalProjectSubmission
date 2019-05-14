@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import noImage from '../img/download.jpeg';
-import videoFile from './SampleVideo_1280x720_1mb.mp4';
 import '../App.css';
 import {Player} from 'video-react';
 import "../../node_modules/video-react/dist/video-react.css";
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 
-class Show extends Component {
+class Video extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,11 +21,7 @@ class Show extends Component {
     async getShow() {
         this.setState({loading: true});
         try {
-            const response = await axios.get(`http://localhost:3001/video/${this.props.match.params.id}`);
-
             const response1 = await axios.get(`http://localhost:3001/video/${this.props.match.params.id}`);
-
-            console.log(response1);
             this.setState({data1: response1.data, loading: false});
         } catch (e) {
             console.log(`error ${e}`);
@@ -39,8 +33,6 @@ class Show extends Component {
             return <Redirect to='/signin'/>
 
         let body = null;
-        const regex = /(<([^>]+)>)/gi;
-
         if (this.state.loading) {
             body = (<div>
                 <h1>Please Wait...</h1>
@@ -53,30 +45,21 @@ class Show extends Component {
         } else {
             body = (<div className="megaCard">
 
-                <div class="megaContainer">
-                    <br/>
+                <div className="megaContainer">
                     <h2>
                         <b>{this.state.data1.Key}</b>
                     </h2>
-                    <br/>
                 </div>
 
-                <Player class="video-react" playsInline="playsInline" poster={this.state.data1.posterUrl} src={this.state.data1["url"]} type="video/mp4" fluid={false} width={400} height={400} marginLeft="200" marginRight="200" marginBottom="200" marginTop="200"/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-				
+                <Player className="video-react" playsInline poster={this.state.data1.posterUrl} src={this.state.data1["url"]} type="video/mp4" fluid={false} width={800} height={400} marginLeft="200" marginRight="200" marginBottom="200" marginTop="200"/>
+
 				<div className="container">
                 <h3>Genre</h3>
                 <h5 >
                     {this.state.data1.Genre}
                 </h5>
+                <br/>
 				</div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
             </div>);
         }
         return body;
@@ -87,4 +70,4 @@ const mapStateToProps = (state) => {
     return {auth: state.firebase.auth}
 };
 
-export default connect(mapStateToProps)(Show);
+export default connect(mapStateToProps)(Video);

@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom';
 
-class BerryList extends Component {
+class FavoritesList extends Component {
     constructor(props) {
         super(props);
         this.searchShows = this.searchShows.bind(this);
@@ -75,10 +73,6 @@ class BerryList extends Component {
         e.preventDefault();
     }
 
-    onSubmit(e) {
-        e.preventDefault();
-    }
-
     searchShows() {
         try {
 
@@ -90,69 +84,51 @@ class BerryList extends Component {
     }
 
     render() {
-        const {auth} = this.props;
-        if (!auth.uid)
-            return <Redirect to='/signin'/>
-
         let body = null;
-        let nextPage = null;
-        let previousPage = null;
-        let li = null;
-        let nextOffset = (this.offset + 20) / 20;
-        let prevOffset = (this.offset - 20) / 20;
-
-        let next = null;
-        let prev = null;
-
+        let cols = null;
         let cnt = 0;
+        console.log(cnt);
 
-        console.log(this.state.data);
+        cols = this.state.data && this.state.data.map((shows, cnt) => {
 
-        li = this.state.data && this.state.data.map((shows, cnt) => (<div>
-            <div className="card">
-                <div className="favorites-btn">
-                    <label for={shows.id} className="favorites-btn">
-                        <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick} defaultChecked="defaultChecked"/>
-                        <i className="glyphicon glyphicon-star-empty"></i>
-                        <i className="glyphicon glyphicon-star"></i>
-                        <span className="add-to-favorites">Favorites</span>
-                    </label>
-                </div>
-                <Link to={`/favorite/${this.state.data && this.state.data[cnt].id}/`}>
-                    <li >
+            return (<div className="col-md-4 col-sm-6" key={shows.id}>
+                <div className="card">
+                    <div className="favorites-btn">
+                        <label htmlFor={shows.id} className="favorites-btn">
+                            <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick} defaultChecked="defaultChecked"/>
+                            <i className="glyphicon glyphicon-star-empty"></i>
+                            <i className="glyphicon glyphicon-star"></i>
+                            <span className="add-to-favorites">Favorites</span>
+                        </label>
+                    </div>
+
+                    <Link to={`/favorite/${this.state.data && this.state.data[cnt].id}/`}>
                         <br/>
-                        <img src={shows.posterUrl} alt="Avatar" width="500px"/>
-                        <div class="container">
+                        <div className="container">
+                            <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                             <br/>
-                            <h4>
-                                <b>{shows.Key}</b>
-                            </h4>
+                            <h4>{shows.Key}</h4>
                         </div>
-                    </li>
-                </Link>
-            </div>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-        </div>));
+                    </Link>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </div>);
+        });
 
         body = (<div >
             <h1>Favorites</h1>
             <br/>
             <br/>
-            <ul className="list-unstyled">{li}</ul>
+            <div className="row">
+                {cols}
+            </div>
         </div>);
 
         return body;
     }
 }
 
-
-const mapStateToProps = (state) => {
-    return {auth: state.firebase.auth}
-};
-
-export default connect(mapStateToProps)(BerryList);
+export default FavoritesList;

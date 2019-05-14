@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import '../App.css';
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom';
 
-class ShowList extends Component {
+import '../App.css';
+
+class RecommendedList extends Component {
     constructor(props) {
         super(props);
         this.searchShows = this.searchShows.bind(this);
@@ -15,7 +14,7 @@ class ShowList extends Component {
             loading: false,
             searchTerm: undefined,
             searchData: undefined,
-            currentLink: '',
+            currentLink: 'https://pokeapi.co/api/v2/machine/',
             nextLink: undefined,
             prevLink: undefined,
             offset: 0,
@@ -29,11 +28,18 @@ class ShowList extends Component {
     async getShows() {
         try {
             console.log(this.props.match.params.page);
-            this.offset = 0;
-            const response = await axios.get(`http://localhost:3001/video`);
-            const favorites = await axios.get(`http://localhost:3001/favorites`);
-            // console.log(favorites.data);
-            await this.setState({data: response.data, isfavorite: favorites.data});
+            if (!this.props.match.params.page) {
+                this.offset = 0;
+                const response = await axios.get(`http://localhost:3001/recommendation/`);
+                const favorites = await axios.get(`http://localhost:3001/favorites`);
+                await this.setState({data: response.data, isfavorite: favorites.data});
+            } else {
+                this.offset = this.props.match.params.page * 20;
+                this.limit = 20;
+                const response = await axios.get(`http://localhost:3001/recommendation/`);
+                const favorites = await axios.get(`http://localhost:3001/favorites`);
+                await this.setState({data: response.data, isfavorite: favorites.data});
+            }
         } catch (e) {
             console.log(e);
         }
@@ -55,8 +61,6 @@ class ShowList extends Component {
     handleClick = (e) => {
         let value = e.target.value;
         let isChecked = e.target.checked;
-        // console.log(value);
-        // console.log(isChecked);
 
         if (isChecked === true) {
             axios.post(`http://localhost:3001/favorites/` + value).then(response => {
@@ -86,79 +90,63 @@ class ShowList extends Component {
     }
 
     render() {
-        const {auth} = this.props;
-        if (!auth.uid)
-            return <Redirect to='/signin'/>
         let body = null;
-        let nextPage = null;
-        let previousPage = null;
-        let li = null;
-        let nextOffset = (this.offset + 20) / 20;
-        let prevOffset = (this.offset - 20) / 20;
-        let isfavorite;
-        if (this.offset === 0) {
-            prevOffset = 0;
-        }
-
-        let next = null;
-        let prev = null;
+        let cols = null;
         let cnt = 0;
-
+        console.log(cnt);
         if (this.state.data && this.state.isfavorite) {
             let favoritesList = this.state.isfavorite.map(videos => {
                 return videos.id;
             });
-            // console.log(favoritesList);
-            li = this.state.data && this.state.data.map((shows, cnt) => {
+
+            cols = this.state.data && this.state.data.map((shows, cnt) => {
                 for (var i = 0; i < favoritesList.length; i++) {
                     if (favoritesList[i] === shows.id) {
-                        return (<div className="col-md-4">
-                            <div key={shows.id}>
-                                <div className="card">
-                                    <div className="favorites-btn">
-                                        <label for={shows.id} className="favorites-btn">
-                                            <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick} defaultChecked="defaultChecked"/>
-                                            <i className="glyphicon glyphicon-star-empty"></i>
-                                            <i className="glyphicon glyphicon-star"></i>
-                                            <span className="add-to-favorites">Favorites</span>
-                                        </label>
-                                    </div>
-
-                                    <Link to={`/videos/${shows.id}/`}>
-                                        <br/>
-                                        <img src={shows.posterUrl} alt="Avatar" width="500px"/>
-                                        <div className="container">
-                                            <br/>
-                                            <h4>{shows.Key}</h4>
-                                        </div>
-                                    </Link>
-
+                        return (<div className="col-md-4 col-sm-6" key={shows.id}>
+                            <div className="card">
+                                <div className="favorites-btn">
+                                    <label htmlFor={shows.id} className="favorites-btn">
+                                        <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick} defaultChecked="defaultChecked"/>
+                                        <i className="glyphicon glyphicon-star-empty"></i>
+                                        <i className="glyphicon glyphicon-star"></i>
+                                        <span className="add-to-favorites">Add to Favorites</span>
+                                    </label>
                                 </div>
 
+                                <Link to={`/recommended/${shows.id}/`}>
+                                    <br/>
+                                    <div className="container">
+                                        <img src={shows.posterUrl} alt="Avatar" width="100%"/>
+                                        <br/>
+                                        <h4>
+                                            <b>{shows.Key}</b>
+                                        </h4>
+                                    </div>
+                                </Link>
                             </div>
-                            <br/>
-
                         </div>);
                     }
                 }
 
-                return (<div className="col-md-4" key={shows.id}>
+                return (<div className="col-md-4 col-sm-6" key={shows.id}>
                     <div className="card">
                         <div className="favorites-btn">
-                            <label for={shows.id} className="favorites-btn">
+                            <label htmlFor={shows.id} className="favorites-btn">
                                 <input type="checkbox" id={shows.id} name={shows.Key} value={shows.id} onClick={this.handleClick}/>
                                 <i className="glyphicon glyphicon-star-empty"></i>
                                 <i className="glyphicon glyphicon-star"></i>
-                                <span className="add-to-favorites">Favorites</span>
+                                <span className="add-to-favorites">Add to Favorites</span>
                             </label>
                         </div>
 
-                        <Link to={`/videos/${shows.id}/`}>
+                        <Link to={`/recommended/${shows.id}/`}>
                             <br/>
-                            <img src={shows.posterUrl} alt="Avatar" width="500px"/>
                             <div className="container">
+                                <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                 <br/>
-                                <h4>{shows.Key}</h4>
+                                <h4>
+                                    <b>{shows.Key}</b>
+                                </h4>
                             </div>
                         </Link>
                     </div>
@@ -170,20 +158,14 @@ class ShowList extends Component {
             });
 
             body = (<div>
-                <h1>Videos</h1>
+                <h1>Recommended Videos</h1>
                 <br/>
                 <br/>
-                <div className="row">
-                    {li}
-                </div>
+                <div className="row">{cols}</div>
             </div>);
         }
         return body;
     }
 }
 
-const mapStateToProps = (state) => {
-    return {auth: state.firebase.auth}
-};
-
-export default connect(mapStateToProps)(ShowList);
+export default RecommendedList;

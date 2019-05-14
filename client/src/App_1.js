@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import logo from './img/netflix.png';
 import './App.css';
 import axios from 'axios';
 import ShowsContainer from './components/ShowsContainer';
-import ErrorContainer from './components/ErrorContainer';
 import {connect} from 'react-redux'
 
 import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
@@ -28,7 +26,6 @@ class App_1 extends Component {
         try {
             const response = await axios.get(`http://localhost:3001/loggedUser/`);
 
-            console.log(response.data);
             this.setState({data: response.data, loading: false});
         } catch (e) {
             console.log(`error ${e}`);
@@ -46,7 +43,6 @@ class App_1 extends Component {
                     <br/>
                     <br/>
                     <br/>
-                    <h1 className="App-title"></h1>
                     <Link className="showlink" to="/videos/page/">
                         All Videos
                     </Link>
@@ -62,15 +58,15 @@ class App_1 extends Component {
                     <br/>
 
                 </header>
-                
+
                 <div className="App-body">
                 <br/>
-                
-                <h2 className="App-body">Enjoy the videos you love with non-stop streaming.</h2> 
+
+                <h2 className="App-body">Enjoy the videos you love with non-stop streaming.</h2>
                 <p className="App-body">Registered users get personalized video recommendations in their account.
                   Add videos to your favorites list when logged in and watch it at one place.</p>
                 <br/>
-                
+
                 <Route path="/" component={ShowsContainer} />
                </div>
             </div>

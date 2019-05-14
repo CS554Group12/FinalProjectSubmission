@@ -90,11 +90,11 @@ h1 {
    border-radius: 2px;
    font-size: 20px;
    color: #424242;
-   max-width: 700px;
+   /* max-width: 700px; */
    height: auto;
    margin: auto;
    text-align: center;
-} 
+}
 
 h2.App-body {
    font-size: 25px;
@@ -231,7 +231,7 @@ label input[type="checkbox"] {
 .favorites-btn .glyphicon-star-empty {
    color: gray;
 }
- 
+
 .favorites-btn .glyphicon-star {
    opacity: 0;
    transition: opacity 0.2s ease-in-out;
@@ -264,7 +264,7 @@ label input[type="checkbox"] {
 
 .carousel {
    height: 650px;
-   width: 100%;
+   width: 700px;
    margin: auto;
    font-weight: bold;
 }
@@ -286,7 +286,7 @@ label input[type="checkbox"] {
    margin: auto;
    position: relative;
 }
- 
+
 div.carousel-item.active {
    height: 100%;
    width: 100%;

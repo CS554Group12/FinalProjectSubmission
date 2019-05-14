@@ -18,7 +18,7 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.signIn(this.state)
-	
+
 		 axios.post(`http://localhost:3001/signIn?email=` + this.state.email).then(response => {
                 console.log(response.data);
             });
@@ -63,4 +63,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
