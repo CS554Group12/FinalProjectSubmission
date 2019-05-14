@@ -106,7 +106,7 @@ class FavoritesList extends Component {
                         <div className="container">
                             <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                             <br/>
-                            <h4>{shows.Key}</h4>
+                            <h2>{shows.Key}</h2>
                         </div>
                     </Link>
                 </div>

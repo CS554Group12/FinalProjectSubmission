@@ -7,8 +7,6 @@ import FavoritesList from './FavoritesList';
 import Recommended from './Recommended';
 import RecommendedList from './RecommendedList';
 import HomePageCarousel from './HomePageCarousel';
-//import Pokemon from './Pokemon';
-//import DescriptionContainer from './DescriptionContainer';
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 

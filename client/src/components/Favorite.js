@@ -51,9 +51,9 @@ class Favorite extends Component {
                 <Player class="video-react" playsInline poster={this.state.data.posterUrl} src={this.state.data["url"]} type="video/mp4" fluid={false} width={800} height={400} marginLeft="200" marginRight="200" marginBottom="200" marginTop="200"/>
                 <div className="container">
                     <h3>Genre</h3>
-                    <h5 >
+                    <h4 >
                         {this.state.data.Genre}
-                    </h5>
+                    </h4>
                 </div>
                 <br/>
             </div>);

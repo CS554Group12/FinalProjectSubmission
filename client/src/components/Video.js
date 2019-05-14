@@ -55,9 +55,9 @@ class Video extends Component {
 
 				<div className="container">
                 <h3>Genre</h3>
-                <h5 >
+                <h4>
                     {this.state.data1.Genre}
-                </h5>
+                </h4>
                 <br/>
 				</div>
             </div>);

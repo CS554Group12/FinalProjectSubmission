@@ -62,7 +62,7 @@ class App_1 extends Component {
                 <div className="App-body">
                 <br/>
 
-                <h2 className="App-body">Enjoy the videos you love with non-stop streaming.</h2>
+                <h1 className="App-body">Enjoy the videos you love with non-stop streaming.</h1>
                 <p className="App-body">Registered users get personalized video recommendations in their account.
                   Add videos to your favorites list when logged in and watch it at one place.</p>
                 <br/>

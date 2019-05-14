@@ -117,9 +117,9 @@ class RecommendedList extends Component {
                                     <div className="container">
                                         <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                         <br/>
-                                        <h4>
+                                        <h2>
                                             <b>{shows.Key}</b>
-                                        </h4>
+                                        </h2>
                                     </div>
                                 </Link>
                             </div>
@@ -143,9 +143,9 @@ class RecommendedList extends Component {
                             <div className="container">
                                 <img src={shows.posterUrl} alt="Avatar" width="100%"/>
                                 <br/>
-                                <h4>
+                                <h2>
                                     <b>{shows.Key}</b>
-                                </h4>
+                                </h2>
                             </div>
                         </Link>
                     </div>
