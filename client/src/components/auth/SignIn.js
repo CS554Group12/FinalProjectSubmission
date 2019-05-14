@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signIn } from '../../store/actions/authActions'
 import { Redirect } from 'react-router-dom'
+import axios from 'axios';
+
 
 class SignIn extends Component {
   state = {
@@ -16,6 +18,10 @@ class SignIn extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.signIn(this.state)
+	
+		 axios.post(`http://localhost:3001/signIn?email=` + this.state.email).then(response => {
+                console.log(response.data);
+            });
   }
   render() {
     const { authError, auth } = this.props;

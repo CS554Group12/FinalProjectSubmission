@@ -31,8 +31,8 @@ let exportedMethods = {
 
                 aws.config.setPromisesDependency();
                 aws.config.update({
-                    accessKeyId : process.env.ACCESS_KEY_ID,
-                    secretAccessKey : process.env.SECRET_ACCESS_KEY,
+                    accessKeyId : "AKIAINAQGUY276U7DGRA",
+                    secretAccessKey : "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",
                     region: 'us-east-1',
                     signatureVersion: 'v4'
                 })
@@ -126,10 +126,16 @@ let exportedMethods = {
 
                 var dbVideo = await videos();
 				var dbPosters = await posters();
+				var dbUsers = await users();
                 await dbVideo.insertOne(await response); // need to uncomment when we use AWS S3
 				await dbPosters.insertOne(await responsePoster);
-                await videosData.addVideoToFavorite(1, "2");
-                await this.addVideoToRecommendations(1, "2");
+				
+				
+				
+				await dbUsers.insertOne({email : "test@gmail.com", firstName : "Shrikant", lastName : "Sherkar", FavoriteVideos : [], RecommendedVideos : [], loggedIn : false, 
+				id : uuid()});
+                await videosData.addVideoToFavorite("test@gmail.com", "34");
+                await this.addVideoToRecommendations("test@gmail.com", "34");
             } catch (e) {
                 console.log(e);
             }
@@ -139,7 +145,7 @@ let exportedMethods = {
     async getFavoritedVideos(userId) {
         var dbUsers = await users();
         let UserObject = await dbUsers.findOne({
-            "id": await userId
+            "email": await userId
         });
         if (await UserObject) {
             var favoriteVideoArr = await UserObject["FavoriteVideos"];
@@ -158,7 +164,7 @@ let exportedMethods = {
 
         var dbUsers = await users();
         let updateStatus = await dbUsers.updateOne({
-            id: userId
+            email: userId
         }, {
             $set: {
                 "RecommendedVideos": await recommendedVideoObjArr
@@ -184,7 +190,7 @@ let exportedMethods = {
         }
         var dbUsers = await users();
         let updateStatus = await dbUsers.updateOne({
-            id: userId
+            email: userId
         }, {
             $set: {
                 "RecommendedVideos": await recommendedVideoObjArr
@@ -201,7 +207,7 @@ let exportedMethods = {
     async getAllRecommendedVideos(userId) {
         var dbUsers = await users();
         let userObj = await dbUsers.findOne({
-            "id": await userId
+            "email": await userId
         });
         let recommendedVideoArr = await userObj["RecommendedVideos"];
         return await recommendedVideoArr;

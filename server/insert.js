@@ -4455,7 +4455,7 @@ dataSetArr : [
     },
     {
         "id": 902,
-        "Name": "Breakfast at Tiffany's (1961)",
+        "Name": "Breakfast at Tiffanys (1961)",
         "Genre": "Drama,Romance"
     },
     {
@@ -5410,7 +5410,7 @@ dataSetArr : [
     },
     {
         "id": 1097,
-        "Name": "E.T. the Extra-Terrestrial (1982)",
+        "Name": "E T the Extra Terrestrial (1982)",
         "Genre": "Children's,Drama,Fantasy,Sci-Fi"
     },
     {
@@ -5900,7 +5900,7 @@ dataSetArr : [
     },
     {
         "id": 1197,
-        "Name": "Princess Bride, The (1987)",
+        "Name": "Princess Bride The (1987)",
         "Genre": "Action,Adventure,Comedy,Romance"
     },
     {
@@ -9500,7 +9500,7 @@ dataSetArr : [
     },
     {
         "id": 1968,
-        "Name": "Breakfast Club, The (1985)",
+        "Name": "Breakfast Club The (1985)",
         "Genre": "Comedy,Drama"
     },
     {
@@ -12800,7 +12800,7 @@ dataSetArr : [
     },
     {
         "id": 2628,
-        "Name": "Star Wars: Episode I - The Phantom Menace (1999)",
+        "Name": "Star Wars (1999)",
         "Genre": "Action,Adventure,Fantasy,Sci-Fi"
     },
     {
@@ -13615,7 +13615,7 @@ dataSetArr : [
     },
     {
         "id": 2791,
-        "Name": "Airplane! (1980)",
+        "Name": "Airplane (1980)",
         "Genre": "Comedy"
     },
     {

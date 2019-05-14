@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
+import axios from 'axios';
 
 class SignUp extends Component {
   state = {
@@ -18,6 +19,10 @@ class SignUp extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.signUp(this.state);
+	
+	 axios.post(`http://localhost:3001/signUp?email=` + this.state.email + `&firstName=` + this.state.firstName + `&lastName=`+this.state.lastName).then(response => {
+                console.log(response.data);
+            });
   }
   render() {
     const { auth, authError } = this.props;

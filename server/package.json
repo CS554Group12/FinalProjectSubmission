@@ -19,6 +19,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
+    "node-fetch": "^2.5.0",
     "nodemon": "^1.19.0",
     "request": "^2.88.0",
     "ts-node": "^8.1.0",
