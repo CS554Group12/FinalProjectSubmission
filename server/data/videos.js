@@ -1,7 +1,7 @@
 const mongoCollections = require("../config/mongoCollections");
 let videos = mongoCollections.videos;
-const s3Bucket = "cs554netflix2";
-const s3BucketPosters = "cs554netflix2posters";
+const s3Bucket = "cs554netflix3";
+const s3BucketPosters = "cs554netflixposters3";
 var request = require("request");
 let users = mongoCollections.users;
 const data = require("../data");
@@ -16,15 +16,15 @@ let exportedMethods = {
         let AllVideosObj = await dbVideo.findOne({
             "Name": s3Bucket
         });
-		
+
 		var dbPosters = await posters();
         let AllPosterObj = await dbPosters.findOne({
             "Name": s3BucketPosters
         });
-		
-		
-		
-		
+
+
+
+
         let AllVideosArr = await AllVideosObj["Contents"];
         return await AllVideosArr;
     },
@@ -60,13 +60,13 @@ let exportedMethods = {
 
         return await finalSingleObj;
     },
-	
-	
+
+
 
     async addVideoToFavorite(userId, videoId) {
         let videoObj = await this.getVideoById(videoId);
         let recoVideoObj = new Object();
-     
+
         var dbUser = await users();
         if (await videoObj) {
             var addToFavStatus = await dbUser.updateOne({
@@ -77,7 +77,7 @@ let exportedMethods = {
                 }
             });
         }
-		
+
 
         if (await addToFavStatus) {
             return true;
@@ -85,7 +85,7 @@ let exportedMethods = {
             return false;
         }
     },
-	
+
 
     async removeVideoFromFavorite(userId, videoId) {
         var dbUser = await users();
